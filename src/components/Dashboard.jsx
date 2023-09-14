@@ -1,8 +1,11 @@
 import React from 'react'
+import dashboardImg from './dashboardImg.jpg'
 
 const Dashboard = () => {
     return (
-        <div>Dashboard</div>
+        <div>
+            <img src={dashboardImg} alt="" style={{ height: "100vh", width: "100%" }} />
+        </div>
     )
 }
 
