@@ -3,6 +3,7 @@ import { Switch, Route, Router } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Dashboard from './components/Dashboard';
+import PageNotFound from './components/PageNotFoundApp';
 
 const theme = createTheme({
   // Add your theme configuration here
@@ -17,7 +18,8 @@ const App = ({ history }) => {
         <CssBaseline />
         <Router history={history}>
           <Switch>
-            <Route path="/dashboard" component={Dashboard} />
+            <Route exact path="/dashboard" component={Dashboard} />
+            <Route component={PageNotFound} />
           </Switch>
         </Router>
       </ThemeProvider>
