@@ -4,10 +4,10 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const deps = require("./package.json").dependencies;
 module.exports = (_, argv) => ({
   output: {
-    publicPath: "http://dashboard-microfrontend.apps.ocp4.pacosta.com/"
-    // argv.mode === "development"
-    // ? "http://localhost:8083/"
-    // : "http://dashboard-microfrontend.apps.ocp4.pacosta.com/",
+    publicPath:
+      argv.mode === "development"
+        ? "http://localhost:8083/"
+        : "http://dashboard-microfrontend.apps.ocp4.pacosta.com/",
   },
 
   resolve: {
@@ -59,10 +59,10 @@ module.exports = (_, argv) => ({
       name: "dashboard",
       filename: "remoteEntry.js",
       remotes: {
-        page_not_found: "page_not_found@http://pagenotfound-microfrontend.apps.ocp4.pacosta.com/remoteEntry.js"
-        // argv.mode === "development"
-        //   ? "page_not_found@http://localhost:8084/remoteEntry.js"
-        //   : "page_not_found@http://pagenotfound-microfrontend.apps.ocp4.pacosta.com/remoteEntry.js",
+        page_not_found:
+          argv.mode === "development"
+            ? "page_not_found@http://localhost:8084/remoteEntry.js"
+            : "page_not_found@http://pagenotfound-microfrontend.apps.ocp4.pacosta.com/remoteEntry.js",
       },
       exposes: {
         './DashboardApp': './src/bootstrap',
